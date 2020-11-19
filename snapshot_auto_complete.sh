@@ -32,25 +32,25 @@ _snapshot() {
           [[ ${i} -gt COMP_CWORD ]] && in_param='--contract' || in_param=''
           continue
           ;;
-        --decimals)
+        -d|--decimals)
           __skip_opt_eq
           (( i = i + 1 ))
           [[ ${i} -gt COMP_CWORD ]] && in_param='--decimals' || in_param=''
           continue
           ;;
-        --from)
+        -f|--from)
           __skip_opt_eq
           (( i = i + 1 ))
           [[ ${i} -gt COMP_CWORD ]] && in_param='--from' || in_param=''
           continue
           ;;
-        --to)
+        -t|--to)
           __skip_opt_eq
           (( i = i + 1 ))
           [[ ${i} -gt COMP_CWORD ]] && in_param='--to' || in_param=''
           continue
           ;;
-        --node-address)
+        -n|--node-address)
           __skip_opt_eq
           (( i = i + 1 ))
           [[ ${i} -gt COMP_CWORD ]] && in_param='--node-address' || in_param=''
@@ -79,7 +79,7 @@ _snapshot() {
   done
   local word="${COMP_WORDS[$COMP_CWORD]}"
   if [[ "${word}" =~ ^[-] ]]; then
-    COMPREPLY=($(compgen -W '-c --contract --decimals --from --to --node-address -o --output -h --help' -- "${word}"))
+    COMPREPLY=($(compgen -W '-c --contract -d --decimals -f --from -t --to -n --node-address -o --output -h --help' -- "${word}"))
     return
   fi
 
